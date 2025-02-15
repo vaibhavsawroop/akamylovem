@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
 export default defineConfig({
   plugins: [react(), runtimeErrorOverlay(), themePlugin()],
   resolve: {
@@ -15,9 +16,12 @@ export default defineConfig({
       "@shared": path.resolve(__dirname, "shared"),
     },
   },
-  root: path.resolve(__dirname, "client"),
+  // Vite expects the `index.html` to be in the root of the project
+  // Change root to point to the correct directory
+  root: path.resolve(__dirname, "client/src"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
-    emptyOutDir: true,
+    // Ensure the output is placed in the correct location for Vercel
+    outDir: path.resolve(__dirname, "dist"),
+    emptyOutDir: true, // Cleans the output directory before building
   },
 });
