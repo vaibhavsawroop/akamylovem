@@ -16,12 +16,9 @@ export default defineConfig({
       "@shared": path.resolve(__dirname, "shared"),
     },
   },
-  // Vite expects the `index.html` to be in the root of the project
-  // Change root to point to the correct directory
-  root: path.resolve(__dirname, "client/src"),
+  root: path.resolve(__dirname, "client"), // Root changed to "client"
   build: {
-    // Ensure the output is placed in the correct location for Vercel
     outDir: path.resolve(__dirname, "dist"),
-    emptyOutDir: true, // Cleans the output directory before building
+    emptyOutDir: true,
   },
 });
